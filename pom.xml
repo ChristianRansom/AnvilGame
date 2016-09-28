@@ -4,7 +4,7 @@
 
   <groupId>muttsworld.dev.team</groupId>
   <artifactId>AnvilGame</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
 
   <name>AnvilGame</name>
@@ -14,12 +14,40 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+	<dependencies>
+	    <!--Spigot API-->
+	    <dependency>
+	           <groupId>org.spigotmc</groupId>
+	           <artifactId>spigot-api</artifactId>
+	           <version>1.10.2-R0.1-SNAPSHOT</version>
+	           <scope>provided</scope>
+	    </dependency>
+	    <!--Bukkit API-->
+	    <dependency>
+	            <groupId>org.bukkit</groupId>
+	            <artifactId>bukkit</artifactId>
+	            <version>1.10.2-R0.1-SNAPSHOT</version>
+	            <scope>provided</scope>
+	    </dependency>
+	</dependencies>
+  
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <configuration>
+                  <source>1.7</source>
+                  <target>1.7</target>
+              </configuration>
+          </plugin>
+      </plugins>
+   </build>
+   
+	<repositories>
+	    <repository>
+	        <id>spigot-repo</id>
+	        <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+	    </repository>
+	</repositories>
 </project>
