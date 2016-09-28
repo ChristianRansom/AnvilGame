@@ -38,17 +38,15 @@ public class AnvilGame extends JavaPlugin implements Listener {
 
 	public void broadcastRadius(String str, Location loc, int radius) {
 		String world = (String) list.get(13);
-		Player[] players = Bukkit.getOnlinePlayers();
-		for (int i = 0; i < players.length; i++) {
-			if (players[i].getWorld().getName().equals(world)
-					&& players[i].getLocation().distance(loc) < radius) {
+		Collection<? extends Player> players = Bukkit.getServer().getOnlinePlayers();
+		for (Player player : players) {
+			if (player.getWorld().getName().equals(world) && player.getLocation().distance(loc) < radius) {
 				// Player is in radius, do something.
-				players[i].sendMessage(str);
+				player.sendMessage(str);
 			}
 		}
 	}
-	
-	
+
 	@EventHandler
 	public void onPlayerTeleport(PlayerTeleportEvent e)
 	{
