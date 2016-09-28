@@ -1,0 +1,8 @@
+name: AnvilGame
+main: muttsworld.dev.team.AnvilGame.AnvilGame
+version: 0.0.1
+commands:
+   agset:
+   aginfo:
+   agdev:
+   anvilgame:
