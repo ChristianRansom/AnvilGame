@@ -31,6 +31,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import net.md_5.bungee.api.ChatColor;
+
 public class AnvilGame extends JavaPlugin implements Listener {
 
 	boolean running = false;
@@ -485,7 +487,7 @@ public class AnvilGame extends JavaPlugin implements Listener {
 			if (currentPlayers.size() == 1) {
 				final Location spawnloc = new Location(Bukkit.getWorld((String) list.get(13)), (Double) list.get(10),
 						(Double) list.get(11), (Double) list.get(12));
-				broadcastRadius(prefix + "&6" + currentPlayers.get(0).getDisplayName() + " &rhas won AnvilGame!",
+				broadcastRadius(prefix + ChatColor.GREEN + currentPlayers.get(0).getDisplayName() + ChatColor.WHITE + " has won AnvilGame!",
 						spawnloc, (Integer) list.get(14));
 
 				// Register win
@@ -516,7 +518,7 @@ public class AnvilGame extends JavaPlugin implements Listener {
 				}
 				p.teleport(spawnloc);
 
-				p.sendMessage(prefix + "Congratulations, &6" + p.getDisplayName() + "&r! Your prize is "
+				p.sendMessage(prefix + "Congratulations, " + ChatColor.GOLD + p.getDisplayName() + ChatColor.WHITE + "! Your prize is "
 						+ rewardPlayer(p) + ".");
 
 				try {
@@ -696,18 +698,18 @@ public class AnvilGame extends JavaPlugin implements Listener {
 		if (cmd.getName().equalsIgnoreCase("agleaderboard")) {
 			ArrayList<Object[]> top = (ArrayList<Object[]>) list.get(20);
 
-			sender.sendMessage("&4--------&6AnvilGame Leaderboard&4--------");
+			sender.sendMessage(ChatColor.WHITE + "--------" + ChatColor.GOLD + "AnvilGame Leaderboard" + ChatColor.WHITE + "--------");
 			for (int i = 0; i < top.size() && i < 10; i++) {
-				sender.sendMessage((i + 1) + ". &6" + top.get(i)[0] + "&r: " + top.get(i)[1] + " wins.");
+				sender.sendMessage((i + 1) + ". " + ChatColor.GOLD + top.get(i)[0] + ChatColor.WHITE + ": " + top.get(i)[1] + " wins.");
 			}
-			sender.sendMessage("&4--------&6AnvilGame Leaderboard&4--------");
+			sender.sendMessage(ChatColor.WHITE + "--------" +  ChatColor.GOLD + "AnvilGame Leaderboard" + ChatColor.WHITE + "--------");
 			return true;
 
 		}
 
 		if (cmd.getName().equalsIgnoreCase("agdev")) {
 
-			sender.sendMessage("&4---------------------&6Information&4---------------------");
+			sender.sendMessage(ChatColor.WHITE + "---------------------" +  ChatColor.GOLD + "Information" + ChatColor.WHITE + "---------------------");
 			sender.sendMessage("AnvilGame was created by jcholton, AKA wenikalla");
 			sender.sendMessage("The project was started on April 15, 2014.");
 			sender.sendMessage("The current version is " + getDescription().getVersion());
@@ -715,13 +717,13 @@ public class AnvilGame extends JavaPlugin implements Listener {
 			sender.sendMessage("If you have any questions, problems, or suggestions,");
 			sender.sendMessage("Please email me at wenikalla@gmail.com");
 			sender.sendMessage("Special thanks to wiwoh for the testing help.");
-			sender.sendMessage("&4---------------------&6Information&4---------------------");
+			sender.sendMessage(ChatColor.WHITE + "---------------------" + ChatColor.GOLD + "Information" + ChatColor.WHITE + "---------------------");
 			return true;
 
 		}
 
 		if (cmd.getName().equalsIgnoreCase("aginfo")) {
-			sender.sendMessage("&4--------&6AnvilGame Info&4--------");
+			sender.sendMessage(ChatColor.WHITE + "--------" +  ChatColor.GOLD + "AnvilGame Info" + ChatColor.WHITE + "--------");
 			// sender.sendMessage("");
 			sender.sendMessage(
 					"Bottom point is located at (" + list.get(0) + "," + list.get(1) + "," + list.get(2) + ")");
@@ -761,7 +763,7 @@ public class AnvilGame extends JavaPlugin implements Listener {
 			}
 			sender.sendMessage("Doors are " + doors.toString());
 
-			sender.sendMessage("&4--------&6AnvilGame Info&4--------");
+			sender.sendMessage(ChatColor.WHITE + "--------" +  ChatColor.GOLD + "AnvilGame Info" + ChatColor.WHITE + "--------");
 			return true;
 		}
 
@@ -1239,7 +1241,7 @@ public class AnvilGame extends JavaPlugin implements Listener {
 
 								long time = ((Long) list.get(25) / 4);
 								Bukkit.getServer().broadcastMessage(
-										prefix + "The AnvilGame warmup has started! &6/AnvilGame&r to join!");
+										prefix + "The AnvilGame warmup has started! " +  ChatColor.GOLD + "/AnvilGame" + ChatColor.WHITE + " to join!");
 								broadcastRadius(prefix + "Starting in " + timeString(time * 4),
 										new Location(Bukkit.getWorld((String) list.get(13)), (Double) list.get(10),
 												(Double) list.get(11), (Double) list.get(12)),
@@ -1335,7 +1337,7 @@ public class AnvilGame extends JavaPlugin implements Listener {
 
 	}
 
-	private String prefix = "&4[AnvilGame]&r ";
+	private String prefix = ChatColor.RED + "[AnvilGame] " + ChatColor.WHITE;
 
 	@Override
 	public void onDisable() {
