@@ -2,8 +2,8 @@
  * AnvilGame is a CraftBukkit plugin created by Jasper Holton
  * Do not redistribute this plugin.
  * 
- * com.wenikalla.AnvilGame
  */
+
 
 package muttsworld.dev.team.AnvilGame;
 
@@ -38,15 +38,16 @@ public class AnvilGame extends JavaPlugin implements Listener {
 
 	public void broadcastRadius(String str, Location loc, int radius) {
 		String world = (String) list.get(13);
-		Collection<? extends Player> players = Bukkit.getServer().getOnlinePlayers();
-		for (Player player : players) {
-			if (player.getWorld().getName().equals(world)
-					&& player.getLocation().distance(loc) < radius) {
+		Player[] players = Bukkit.getOnlinePlayers();
+		for (int i = 0; i < players.length; i++) {
+			if (players[i].getWorld().getName().equals(world)
+					&& players[i].getLocation().distance(loc) < radius) {
 				// Player is in radius, do something.
-				player.sendMessage(str);
+				players[i].sendMessage(str);
 			}
 		}
 	}
+	
 	
 	@EventHandler
 	public void onPlayerTeleport(PlayerTeleportEvent e)
@@ -1390,10 +1391,10 @@ public class AnvilGame extends JavaPlugin implements Listener {
 						// If we have enough players to start the game...
 						if ((currentGamesInCycle < (Integer) list.get(24))) {
 
-							//getLogger().info("Checking for players...");
-							//getLogger().info("There are " + playersInRect().size() + " players in the arena");
+							getLogger().info("Checking for players...");
 
-							if ((playersInRect().size() >= (Integer) list.get(19))
+							if ((playersInRect().size() >= (Integer) list
+									.get(19))
 									&& ((Boolean) list.get(18)
 											&& (Boolean) list.get(17) && (Boolean) list
 												.get(16))) {
