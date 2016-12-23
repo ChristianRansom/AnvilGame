@@ -2,6 +2,9 @@
  * AnvilGame is a CraftBukkit plugin created by Jasper Holton
  * Do not redistribute this plugin.
  * 
+ * 
+ * This plugin has been modified by the muttsworld development team
+ * to make it compatible with spigot 1.10.2
  */
 
 package muttsworld.dev.team.AnvilGame;
